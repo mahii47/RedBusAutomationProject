@@ -7,25 +7,23 @@ import pages.SearchPage;
 
 public class SearchTest extends BaseTest {
 	
-	SearchPage sp = new SearchPage(driver);
+	SearchPage search; 
 	
 	@BeforeTest
 	public void start()
 	{
-	openBrowser();
+		openBrowser();
+		search = new SearchPage(driver);
 	}
-	
 	@Test
 	public void searchbus() throws InterruptedException
 	{
-		sp.enterSource("Pune");
-		sp.enterDestination("Mumbai");
+		search.enterSource("Pune");
+		search.enterDestination("Mumbai");
 	}
-	
 	@AfterTest
 	public void end()
 	{
 		closeBrowser();
 	}
-
 }
