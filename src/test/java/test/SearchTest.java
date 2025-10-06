@@ -20,6 +20,7 @@ public class SearchTest extends BaseTest {
 	{
 		search.enterSource("Pune");
 		search.enterDestination("Mumbai");
+		search.dateofJourney("November 2025","26");
 	}
 	@AfterTest
 	public void end()

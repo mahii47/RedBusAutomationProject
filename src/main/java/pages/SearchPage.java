@@ -18,6 +18,7 @@ public class SearchPage extends BaseTest{
 	
 	By Destination1 = By.xpath("(//div[@class='srcDestWrapper___e67e69'])[1]");
 	By Destination2 = By.xpath("(//div[@class='srcDestWrapper___e67e69'])[2]");
+	By dateofjourney = By.xpath("//*[text()='Date of Journey']");
 	
 	public void enterSource(String from) throws InterruptedException {
 		
@@ -54,5 +55,11 @@ public class SearchPage extends BaseTest{
 		            break;
 		        }
 		    }
+	}
+	public void dateofJourney(String MonethYear,String Day)
+	{
+		WebElement date = wait.until(ExpectedConditions.elementToBeClickable(dateofjourney));
+		date.click();
+		selectDate(MonethYear,Day);
 	}
 }
