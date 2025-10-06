@@ -37,7 +37,7 @@ public class BaseTest {
 		{
 			WebElement currentMonthYear = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class,'monthYear')]")));
 			String currentMonth = currentMonthYear.getText();
-			System.out.println(currentMonth);
+			System.out.println("Current month is: "+currentMonth);
 			
 			if(monthYear.equals(currentMonth))
 			{
@@ -45,13 +45,16 @@ public class BaseTest {
 			}
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[contains(@class,'right')]"))).click();
-				
+				break;
 		}
 		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'calendarDate') and not(contains(@class,'disabled'))]//span[text()='" + day + "']"))).click();
-		
-		
-		
+	}
+	
+	public void click(By clickbutton)
+	{
+		WebElement button = wait.until(ExpectedConditions.elementToBeClickable(clickbutton));
+		button.click();
 	}
 	
 }

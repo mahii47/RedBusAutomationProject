@@ -19,6 +19,11 @@ public class SearchPage extends BaseTest{
 	By Destination1 = By.xpath("(//div[@class='srcDestWrapper___e67e69'])[1]");
 	By Destination2 = By.xpath("(//div[@class='srcDestWrapper___e67e69'])[2]");
 	By dateofjourney = By.xpath("//*[text()='Date of Journey']");
+	By BookingforWomen = By.cssSelector("div[role=switch]");
+	By BookingWomenaccept = By.xpath("//button[text()='Got it']");
+			//By.cssSelector("button.primaryButton___3262c2");
+	By searchbuses = By.cssSelector("button[class='primaryButton___3262c2 searchButtonWrapper___90670b ']");
+	
 	
 	public void enterSource(String from) throws InterruptedException {
 		
@@ -61,5 +66,8 @@ public class SearchPage extends BaseTest{
 		WebElement date = wait.until(ExpectedConditions.elementToBeClickable(dateofjourney));
 		date.click();
 		selectDate(MonethYear,Day);
+		click(BookingforWomen);
+		click(BookingWomenaccept);
+		click(searchbuses);
 	}
 }

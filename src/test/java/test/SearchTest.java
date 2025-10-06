@@ -25,6 +25,6 @@ public class SearchTest extends BaseTest {
 	@AfterTest
 	public void end()
 	{
-		closeBrowser();
+		//closeBrowser();
 	}
 }
