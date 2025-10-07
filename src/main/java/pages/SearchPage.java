@@ -66,7 +66,7 @@ public class SearchPage extends BaseTest{
 		        String name = city.getText().trim();
 		        if (name.toLowerCase().contains(to.toLowerCase())) {
 		            city.click();
-		            System.out.println("Select destinationCity is : " + to);
+		            System.out.println("Selected destinationCity is: " + to);
 		            break;
 		        }
 		    }

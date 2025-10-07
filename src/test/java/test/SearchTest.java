@@ -21,11 +21,11 @@ public class SearchTest extends BaseTest {
 	@Test(priority=0)
 	public void searchbus() throws InterruptedException
 	{
-		search.enterSource("Akola");
-		search.enterDestination("Pune");
+		search.enterSource("Pune");
+		search.enterDestination("Mumbai");
 		search.dateofJourney("November 2025","17");
 	}
-	@Test(priority=1)
+	@Test(priority=1,dependsOnMethods= {"searchbus"})
 	public void resultbus() throws InterruptedException
 	{
 		busresult.resultBus();
