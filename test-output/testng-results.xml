@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="2" passed="2" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-06T23:15:47 IST" name="Default suite" finished-at="2025-10-06T23:16:01 IST" duration-ms="13482">
+  <suite started-at="2025-10-07T21:22:45 IST" name="Default suite" finished-at="2025-10-07T21:24:28 IST" duration-ms="102895">
     <groups>
     </groups>
-    <test started-at="2025-10-06T23:15:47 IST" name="Default test" finished-at="2025-10-06T23:16:01 IST" duration-ms="13482">
+    <test started-at="2025-10-07T21:22:45 IST" name="Default test" finished-at="2025-10-07T21:24:28 IST" duration-ms="102895">
       <class name="test.SearchTest">
-        <test-method is-config="true" signature="start()[pri:0, instance:test.SearchTest@117e949d]" started-at="2025-10-06T23:15:47 IST" name="start" finished-at="2025-10-06T23:15:54 IST" duration-ms="6085" status="PASS">
+        <test-method is-config="true" signature="start()[pri:0, instance:test.SearchTest@6db9f5a4]" started-at="2025-10-07T21:22:45 IST" name="start" finished-at="2025-10-07T21:22:50 IST" duration-ms="4720" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- start -->
-        <test-method signature="searchbus()[pri:0, instance:test.SearchTest@117e949d]" started-at="2025-10-06T23:15:54 IST" name="searchbus" finished-at="2025-10-06T23:16:01 IST" duration-ms="7316" status="PASS">
+        <test-method signature="searchbus()[pri:0, instance:test.SearchTest@6db9f5a4]" started-at="2025-10-07T21:22:50 IST" name="searchbus" finished-at="2025-10-07T21:23:01 IST" duration-ms="11214" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- searchbus -->
-        <test-method is-config="true" signature="end()[pri:0, instance:test.SearchTest@117e949d]" started-at="2025-10-06T23:16:01 IST" name="end" finished-at="2025-10-06T23:16:01 IST" duration-ms="1" status="PASS">
+        <test-method signature="resultbus()[pri:1, instance:test.SearchTest@6db9f5a4]" started-at="2025-10-07T21:23:01 IST" name="resultbus" finished-at="2025-10-07T21:24:28 IST" duration-ms="86578" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- resultbus -->
+        <test-method is-config="true" signature="end()[pri:0, instance:test.SearchTest@6db9f5a4]" started-at="2025-10-07T21:24:28 IST" name="end" finished-at="2025-10-07T21:24:28 IST" duration-ms="323" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->

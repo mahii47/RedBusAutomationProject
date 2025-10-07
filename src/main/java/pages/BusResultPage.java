@@ -1,0 +1,89 @@
+package pages;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import base.BaseTest;
+
+public class BusResultPage extends BaseTest{
+
+	public BusResultPage(WebDriver driver)
+	{
+		this.driver = driver;
+		this.wait = new WebDriverWait(driver,Duration.ofSeconds(15));
+	}
+	public void resultBus() throws InterruptedException
+	{	
+		  JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	        long lastHeight = (long) js.executeScript("return document.body.scrollHeight");
+
+	        while (true) {
+	           
+	        	for(int i=0;i<5;i++)
+	        	{
+	            js.executeScript("window.scrollBy(0,500);");
+	            Thread.sleep(1000); 
+	        	}
+	            long newHeight = (long) js.executeScript("return document.body.scrollHeight");
+	            if (newHeight == lastHeight) {
+	                break; 
+	            }
+	            lastHeight = newHeight;
+	        }
+	        List<WebElement> allBuses = driver.findElements(By.xpath("//li[contains(@class,'tupleWrapper')]"));
+	        System.out.println("Total buses loaded: " + allBuses.size());
+
+	        for (WebElement bus : allBuses) {
+	            System.out.println(bus.getText()); 
+	            System.out.println("------------------------------------------------------------");
+	        }
+	}
+	public void Lowestbusticket()
+	{	
+		List<WebElement> buses = driver.findElements(By.xpath("//li[contains(@class,'tupleWrapper')]"));
+		double minPrice = Double.MAX_VALUE;
+		String cheapestBus = "";
+
+		for (WebElement bus : buses) {
+		    String priceText = bus.findElement(By.xpath(".//p[contains(@class,'finalFare')]")).getText(); // 499
+		    priceText = priceText.replaceAll("[^0-9]", ""); // Remove  and other chars
+		    double price = Double.parseDouble(priceText);
+
+		    if (price < minPrice) {
+		        minPrice = price;
+		        cheapestBus = bus.findElement(By.xpath(".//div[contains(@class,'travelsName')]")).getText();
+		    }
+		}
+		System.out.println("-----------------Cheapest Bus Ticket-------------------------------------------");
+		System.out.println("Cheapest Bus ticket: " + cheapestBus + " - Price: " + minPrice);
+		System.out.println("--------------------------------------------------------------------------------");
+	}
+	public void Highestbusticket()
+	{
+		List<WebElement> buses = driver.findElements(By.xpath("//li[contains(@class,'tupleWrapper')]"));
+		double minPrice = Double.MIN_VALUE;
+		String highestBus = "";
+
+		for (WebElement bus : buses) {
+		    String priceText = bus.findElement(By.xpath(".//p[contains(@class,'finalFare')]")).getText(); // 499
+		    priceText = priceText.replaceAll("[^0-9]", ""); // Remove  and other chars
+		    double price = Double.parseDouble(priceText);
+
+		    if (price > minPrice) {
+		        minPrice = price;
+		        highestBus = bus.findElement(By.xpath(".//div[contains(@class,'travelsName')]")).getText();
+		    }
+		}
+		System.out.println("-----------------Expensive Bus Ticket-------------------------------------------");
+		System.out.println("Expensive Bus ticket: " + highestBus + " - Price: " + minPrice);
+		System.out.println("--------------------------------------------------------------------------------");
+	}
+}

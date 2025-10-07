@@ -19,7 +19,7 @@ public class BaseTest {
 		driver.manage().window().maximize();
 		driver.get("https://www.redbus.in/");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-		 wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 	public void closeBrowser()
 	{

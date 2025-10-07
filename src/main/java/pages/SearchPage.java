@@ -2,6 +2,7 @@ package pages;
 import java.time.Duration;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,7 +62,7 @@ public class SearchPage extends BaseTest{
 		        }
 		    }
 	}
-	public void dateofJourney(String MonethYear,String Day)
+	public void dateofJourney(String MonethYear,String Day) throws InterruptedException
 	{
 		WebElement date = wait.until(ExpectedConditions.elementToBeClickable(dateofjourney));
 		date.click();
@@ -69,5 +70,6 @@ public class SearchPage extends BaseTest{
 		click(BookingforWomen);
 		click(BookingWomenaccept);
 		click(searchbuses);
+		Thread.sleep(5000);
 	}
 }
