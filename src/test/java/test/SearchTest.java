@@ -21,9 +21,9 @@ public class SearchTest extends BaseTest {
 	@Test(priority=0)
 	public void searchbus() throws InterruptedException
 	{
-		search.enterSource("Pune");
-		search.enterDestination("Mumbai");
-		search.dateofJourney("November 2025","26");
+		search.enterSource("Akola");
+		search.enterDestination("Pune");
+		search.dateofJourney("November 2025","17");
 	}
 	@Test(priority=1)
 	public void resultbus() throws InterruptedException

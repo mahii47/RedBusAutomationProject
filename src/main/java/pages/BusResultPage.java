@@ -40,6 +40,7 @@ public class BusResultPage extends BaseTest{
 	        }
 	        List<WebElement> allBuses = driver.findElements(By.xpath("//li[contains(@class,'tupleWrapper')]"));
 	        System.out.println("Total buses loaded: " + allBuses.size());
+	        System.out.println("------------------------------------------------------------");
 
 	        for (WebElement bus : allBuses) {
 	            System.out.println(bus.getText()); 
@@ -74,7 +75,7 @@ public class BusResultPage extends BaseTest{
 
 		for (WebElement bus : buses) {
 		    String priceText = bus.findElement(By.xpath(".//p[contains(@class,'finalFare')]")).getText(); // 499
-		    priceText = priceText.replaceAll("[^0-9]", ""); // Remove  and other chars
+		    priceText = priceText.replaceAll("[^0-9]", ""); 
 		    double price = Double.parseDouble(priceText);
 
 		    if (price > minPrice) {

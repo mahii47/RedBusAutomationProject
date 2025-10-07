@@ -28,7 +28,6 @@ public class BaseTest {
 		 driver.quit();
 		}
 	}
-	
 	public void selectDate(String monthYear,String day)
 	{
 		WebElement calender = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@class='datepicker___d50075 '] ")));
@@ -37,24 +36,19 @@ public class BaseTest {
 		{
 			WebElement currentMonthYear = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class,'monthYear')]")));
 			String currentMonth = currentMonthYear.getText();
-			System.out.println("Current month is: "+currentMonth);
 			
 			if(monthYear.equals(currentMonth))
 			{
 				break;
 			}
-			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//i[contains(@class,'right')]"))).click();
 				break;
 		}
-		
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@class,'calendarDate') and not(contains(@class,'disabled'))]//span[text()='" + day + "']"))).click();
 	}
-	
 	public void click(By clickbutton)
 	{
 		WebElement button = wait.until(ExpectedConditions.elementToBeClickable(clickbutton));
 		button.click();
 	}
-	
 }

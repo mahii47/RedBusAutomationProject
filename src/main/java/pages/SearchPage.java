@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import base.BaseTest;
@@ -22,42 +23,50 @@ public class SearchPage extends BaseTest{
 	By dateofjourney = By.xpath("//*[text()='Date of Journey']");
 	By BookingforWomen = By.cssSelector("div[role=switch]");
 	By BookingWomenaccept = By.xpath("//button[text()='Got it']");
-			//By.cssSelector("button.primaryButton___3262c2");
 	By searchbuses = By.cssSelector("button[class='primaryButton___3262c2 searchButtonWrapper___90670b ']");
 	
 	
 	public void enterSource(String from) throws InterruptedException {
-		
-	    WebElement fromBox = wait.until(ExpectedConditions.elementToBeClickable(Destination1));
+	
+		WebElement fromBox = wait.until(ExpectedConditions.elementToBeClickable(Destination1));
 	    fromBox.click();
-
+	    
+	    WebElement fromInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("srcDest")));
+		WebElement mainbox = wait.until(ExpectedConditions.elementToBeClickable(fromInput));
+		mainbox.sendKeys(from);
+		Thread.sleep(2000);
+	    
 	    List<WebElement> cityList = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
-	        By.xpath("//div[@class='listHeader___90a8b7']")));
-
-	    for (WebElement city : cityList) {
-	        String name = city.getText().trim();
-	//        System.out.println("City found: " + name);
-	        if (name.equalsIgnoreCase(from)) {
-	            city.click();
-	            System.out.println("Clicked on: " + from);
-	            break;
-	        }
-	    }
+		        By.xpath("//div[@class='listHeader___90a8b7']")));
+	
+		    for (WebElement city : cityList) {
+		       String name = city.getText().trim();
+		        if(name.toLowerCase().contains(from.toLowerCase())) {
+		            city.click();
+		            System.out.println("Selected sourceCity is: " + from);
+		            break;
+		        }
+		    }
 	}
-	public void enterDestination(String to)
+	
+	public void enterDestination(String to) throws InterruptedException
 	{
 		    WebElement fromBox = wait.until(ExpectedConditions.elementToBeClickable(Destination2));
 		    fromBox.click();
-
+		    
+		    WebElement fromInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("srcDest")));
+			WebElement mainbox = wait.until(ExpectedConditions.elementToBeClickable(fromInput));
+			mainbox.sendKeys(to);
+			Thread.sleep(2000);
+			
 		    List<WebElement> cityList = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
 		        By.xpath("//div[@class='listHeader___90a8b7']")));
 
 		    for (WebElement city : cityList) {
 		        String name = city.getText().trim();
-		    //    System.out.println("City found: " + name);
-		        if (name.equalsIgnoreCase(to)) {
+		        if (name.toLowerCase().contains(to.toLowerCase())) {
 		            city.click();
-		            System.out.println("Clicked on: " + to);
+		            System.out.println("Select destinationCity is : " + to);
 		            break;
 		        }
 		    }
