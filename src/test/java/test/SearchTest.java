@@ -37,6 +37,7 @@ public class SearchTest extends BaseTest {
 		bookingpage.SelectBus(busresult.getCheapestBusElement());
 		bookingpage.SelectSeat();
 		bookingpage.selectboardingpoint();
+		bookingpage.PassengerInfo();
 	}
 	@AfterTest
 	public void end()

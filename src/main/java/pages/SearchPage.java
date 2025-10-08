@@ -25,12 +25,10 @@ public class SearchPage extends BaseTest{
 	By BookingWomenaccept = By.xpath("//button[text()='Got it']");
 	By searchbuses = By.cssSelector("button[class='primaryButton___3262c2 searchButtonWrapper___90670b ']");
 	
-	
 	public void enterSource(String from) throws InterruptedException {
 	
 		WebElement fromBox = wait.until(ExpectedConditions.elementToBeClickable(Destination1));
 	    fromBox.click();
-	    
 	    WebElement fromInput = wait.until(ExpectedConditions.elementToBeClickable(By.id("srcDest")));
 		WebElement mainbox = wait.until(ExpectedConditions.elementToBeClickable(fromInput));
 		mainbox.sendKeys(from);
@@ -48,7 +46,6 @@ public class SearchPage extends BaseTest{
 		        }
 		    }
 	}
-	
 	public void enterDestination(String to) throws InterruptedException
 	{
 		    WebElement fromBox = wait.until(ExpectedConditions.elementToBeClickable(Destination2));

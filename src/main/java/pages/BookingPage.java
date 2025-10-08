@@ -18,8 +18,16 @@ public class BookingPage extends BaseTest{
 	By button = By.cssSelector("button[class ='primaryButton___3262c2 button___2b7236 ']");
 	By boardpoint = By.xpath("//div[@data-id='0']//label");
 	By droppoint = By.xpath("(//div[@class='bpdpContainer___e8fcb2'])[2]//div[@data-id='0']//label");
-
-
+	By phone = By.id("0_6");
+	By email = By.id("0_5");
+	By name = By.id("0_4");
+	By age = By.id("0_1");
+	By gender = By.xpath("//div[@aria-label='Male']");
+	By freeCancellation = By.xpath("(//*[@class='fcSubheader___7e52e7'])[2]");
+	By redbusassurance = By.id("insuranceRejectText");
+	By donation = By.xpath("//*[@class='switchLabel___a8ead2 unChecked___09ee04 enabled___ad293b ']");
+	By continuebutton = By.xpath("(//button[@class='primaryButton___3262c2  '])[2]");
+	
 	public BookingPage(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver = driver;
@@ -41,9 +49,8 @@ public class BookingPage extends BaseTest{
 	    Thread.sleep(500);
 	    wait.until(ExpectedConditions.elementToBeClickable(cheapestBusButton));	   
 	    cheapestBusButton.click();
-	    System.out.println("Clicked on the cheapest bus button successfully.");
+	 //   System.out.println("Clicked on the cheapest bus button successfully.");
 	}
-	
 	public void SelectSeat()
 	{
 		try
@@ -57,18 +64,58 @@ public class BookingPage extends BaseTest{
 	
 		WebElement seat = wait.until(ExpectedConditions.elementToBeClickable(specificseat));
 		seat.click();
-		
 		WebElement pointsbutton = wait.until(ExpectedConditions.elementToBeClickable(button));
 		pointsbutton.click();
-		
 	}
-	public void selectboardingpoint()
+	public void selectboardingpoint() throws InterruptedException
 	{
 		WebElement board = wait.until(ExpectedConditions.elementToBeClickable(boardpoint));	
 		board.click();
 		WebElement drop =  wait.until(ExpectedConditions.elementToBeClickable(droppoint));	
 		drop.click();
-		WebElement pointsbutton = wait.until(ExpectedConditions.elementToBeClickable(button));
-		pointsbutton.click();
+		try {
+		WebElement passengerbutton =  wait.until(ExpectedConditions.elementToBeClickable(button)); 
+		passengerbutton.click();
+		}catch(Exception e)
+		{
+			
+		}
+		Thread.sleep(2000);
+	}
+	public void PassengerInfo() throws InterruptedException
+	{
+		WebElement Phone = wait.until(ExpectedConditions.elementToBeClickable(phone));
+		Phone.click();
+		Phone.sendKeys("7758937720");
+		WebElement Email = wait.until(ExpectedConditions.elementToBeClickable(email));
+		Email.sendKeys("mahmankar333@gmail.com");
+		WebElement dropdown = driver.findElement(By.xpath("//div[@class='gstWrap___478b5c']"));
+		dropdown.click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//div[@data-radio-index='0']//label")).click();
+		WebElement Name = wait.until(ExpectedConditions.elementToBeClickable(name));
+		Name.sendKeys("Mahesh");
+		WebElement Age = wait.until(ExpectedConditions.elementToBeClickable(age));
+		Age.sendKeys("27");
+		WebElement Gender = wait.until(ExpectedConditions.elementToBeClickable(gender));
+		Gender.click();
+		
+		WebElement FreeCancellation =  wait.until(ExpectedConditions.elementToBeClickable(freeCancellation));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", FreeCancellation);
+		Thread.sleep(1000); // optional delay for stability
+		FreeCancellation.click();
+		
+		WebElement Redbusassurance = wait.until(ExpectedConditions.elementToBeClickable(redbusassurance));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Redbusassurance);
+		Thread.sleep(1000);
+		Redbusassurance.click();
+		
+		WebElement Donation = wait.until(ExpectedConditions.elementToBeClickable(donation));
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Donation);
+		Thread.sleep(1000);
+		Donation.click();
+		
+		WebElement ContinueButton = wait.until(ExpectedConditions.elementToBeClickable(continuebutton));
+		ContinueButton.click();
 	}
 }

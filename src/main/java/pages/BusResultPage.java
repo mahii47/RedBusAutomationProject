@@ -71,11 +71,8 @@ public class BusResultPage extends BaseTest{
 		System.out.println("-----------------Cheapest Bus Ticket-------------------------------------------");
 		System.out.println("Cheapest Bus ticket: " + cheapestBus + " - Price: " + minPrice);
 		System.out.println("--------------------------------------------------------------------------------");
-		
-		Thread.sleep(5000);
-	
+		Thread.sleep(2000);
 	}
-	
 	public WebElement getCheapestBusElement()
 	{
 		return cheapestBusElement;
