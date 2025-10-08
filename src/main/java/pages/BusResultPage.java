@@ -13,6 +13,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import base.BaseTest;
 
 public class BusResultPage extends BaseTest{
+	 WebElement cheap;
+	 String cheapestBus = "";
+	 public  WebElement cheapestBusElement = null; 
 
 	public BusResultPage(WebDriver driver)
 	{
@@ -47,11 +50,11 @@ public class BusResultPage extends BaseTest{
 	            System.out.println("------------------------------------------------------------");
 	        }
 	}
-	public void Lowestbusticket()
+	public void Lowestbusticket() throws InterruptedException
 	{	
 		List<WebElement> buses = driver.findElements(By.xpath("//li[contains(@class,'tupleWrapper')]"));
 		double minPrice = Double.MAX_VALUE;
-		String cheapestBus = "";
+	
 
 		for (WebElement bus : buses) {
 		    String priceText = bus.findElement(By.xpath(".//p[contains(@class,'finalFare')]")).getText(); // 499
@@ -61,11 +64,21 @@ public class BusResultPage extends BaseTest{
 		    if (price < minPrice) {
 		        minPrice = price;
 		        cheapestBus = bus.findElement(By.xpath(".//div[contains(@class,'travelsName')]")).getText();
+		        cheap = bus.findElement(By.xpath(".//div[contains(@class,'travelsName')]"));
+		        cheapestBusElement = bus;
 		    }
 		}
 		System.out.println("-----------------Cheapest Bus Ticket-------------------------------------------");
 		System.out.println("Cheapest Bus ticket: " + cheapestBus + " - Price: " + minPrice);
 		System.out.println("--------------------------------------------------------------------------------");
+		
+		Thread.sleep(5000);
+	
+	}
+	
+	public WebElement getCheapestBusElement()
+	{
+		return cheapestBusElement;
 	}
 	public void Highestbusticket()
 	{
