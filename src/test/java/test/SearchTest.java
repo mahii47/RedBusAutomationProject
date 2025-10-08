@@ -34,10 +34,10 @@ public class SearchTest extends BaseTest {
 		busresult.resultBus();
 		busresult.Highestbusticket();
 		busresult.Lowestbusticket();
-		bookingpage.SelectSeat(busresult.getCheapestBusElement());
+		bookingpage.SelectBus(busresult.getCheapestBusElement());
+		bookingpage.SelectSeat();
+		bookingpage.selectboardingpoint();
 	}
-	
-	
 	@AfterTest
 	public void end()
 	{
