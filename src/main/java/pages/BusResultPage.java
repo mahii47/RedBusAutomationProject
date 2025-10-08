@@ -57,8 +57,8 @@ public class BusResultPage extends BaseTest{
 	
 
 		for (WebElement bus : buses) {
-		    String priceText = bus.findElement(By.xpath(".//p[contains(@class,'finalFare')]")).getText(); // 499
-		    priceText = priceText.replaceAll("[^0-9]", ""); // Remove  and other chars
+		    String priceText = bus.findElement(By.xpath(".//p[contains(@class,'finalFare')]")).getText(); 
+		    priceText = priceText.replaceAll("[^0-9]", ""); 
 		    double price = Double.parseDouble(priceText);
 
 		    if (price < minPrice) {

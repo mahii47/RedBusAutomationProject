@@ -1,6 +1,7 @@
 package pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -29,7 +30,6 @@ public class BookingPage extends BaseTest{
 	By continuebutton = By.xpath("(//button[@class='primaryButton___3262c2  '])[2]");
 	
 	public BookingPage(WebDriver driver) {
-		// TODO Auto-generated constructor stub
 		this.driver = driver;
 		this.wait = new WebDriverWait(driver,Duration.ofSeconds(15));
 	}
@@ -49,23 +49,6 @@ public class BookingPage extends BaseTest{
 	    Thread.sleep(500);
 	    wait.until(ExpectedConditions.elementToBeClickable(cheapestBusButton));	   
 	    cheapestBusButton.click();
-	 //   System.out.println("Clicked on the cheapest bus button successfully.");
-	}
-	public void SelectSeat()
-	{
-		try
-		{
-			WebElement cross =  wait.until(ExpectedConditions.elementToBeClickable(crosssign));
-			cross.click();
-		}catch(Exception e)
-		{
-			
-		}
-	
-		WebElement seat = wait.until(ExpectedConditions.elementToBeClickable(specificseat));
-		seat.click();
-		WebElement pointsbutton = wait.until(ExpectedConditions.elementToBeClickable(button));
-		pointsbutton.click();
 	}
 	public void selectboardingpoint() throws InterruptedException
 	{
@@ -82,6 +65,45 @@ public class BookingPage extends BaseTest{
 		}
 		Thread.sleep(2000);
 	}
+	
+	public void SelectSeat() {
+	    try {
+	        // Close pop-up if present
+	        WebElement cross = wait.until(ExpectedConditions.elementToBeClickable(crosssign));
+	        cross.click();
+	    } catch (Exception e) {
+	  
+	    }
+
+	    try {
+	      
+	        List<WebElement> seats = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+	                By.cssSelector("span[class*='sleeper__ind-seat']")));
+
+	        boolean seatSelected = false;
+
+	        for (WebElement seat : seats) {
+	            String ariaLabel = seat.getAttribute("aria-label");
+
+	            if (ariaLabel != null && ariaLabel.toLowerCase().contains("available")) {
+	                System.out.println("Available seat found: " + ariaLabel);
+
+	                wait.until(ExpectedConditions.elementToBeClickable(seat)).click();
+	                seatSelected = true;
+	                break;
+	            }
+	        }
+
+	        if (!seatSelected) {
+	            System.out.println("No available seats found.");
+	        }
+	        WebElement pointsbutton = wait.until(ExpectedConditions.elementToBeClickable(button));
+	        pointsbutton.click();
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 	public void PassengerInfo() throws InterruptedException
 	{
 		WebElement Phone = wait.until(ExpectedConditions.elementToBeClickable(phone));
@@ -97,19 +119,30 @@ public class BookingPage extends BaseTest{
 		Name.sendKeys("Mahesh");
 		WebElement Age = wait.until(ExpectedConditions.elementToBeClickable(age));
 		Age.sendKeys("27");
+		try {
 		WebElement Gender = wait.until(ExpectedConditions.elementToBeClickable(gender));
 		Gender.click();
-		
+		}catch(Exception e){
+			
+		}
+		try {
 		WebElement FreeCancellation =  wait.until(ExpectedConditions.elementToBeClickable(freeCancellation));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", FreeCancellation);
 		Thread.sleep(1000); // optional delay for stability
 		FreeCancellation.click();
-		
+		}catch(Exception e)
+		{
+			
+		}
+		try {
 		WebElement Redbusassurance = wait.until(ExpectedConditions.elementToBeClickable(redbusassurance));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Redbusassurance);
 		Thread.sleep(1000);
 		Redbusassurance.click();
-		
+		}catch(Exception e)
+		{
+			
+		}
 		WebElement Donation = wait.until(ExpectedConditions.elementToBeClickable(donation));
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", Donation);
 		Thread.sleep(1000);

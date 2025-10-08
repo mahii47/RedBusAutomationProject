@@ -26,7 +26,7 @@ public class SearchTest extends BaseTest {
 	{
 		search.enterSource("Akola");
 		search.enterDestination("Pune");
-		search.dateofJourney("November 2025","17");
+		search.dateofJourney("October 2025","17");
 	}
 	@Test(priority=1,dependsOnMethods= {"searchbus"})
 	public void resultbus() throws InterruptedException
