@@ -26,7 +26,7 @@ public class BookingPage extends BaseTest{
 	By gender = By.xpath("//div[@aria-label='Male']");
 	By freeCancellation = By.xpath("(//*[@class='fcSubheader___7e52e7'])[2]");
 	By redbusassurance = By.id("insuranceRejectText");
-	By donation = By.xpath("//*[@class='switchLabel___a8ead2 unChecked___09ee04 enabled___ad293b ']");
+	By donation = By.xpath("(//*[@class='switchLabel___a8ead2 unChecked___09ee04 enabled___ad293b '])[2]");
 	By continuebutton = By.xpath("(//button[@class='primaryButton___3262c2  '])[2]");
 	
 	public BookingPage(WebDriver driver) {
