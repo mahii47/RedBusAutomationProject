@@ -23,7 +23,7 @@ public class BookingPage extends BaseTest{
 	By email = By.id("0_5");
 	By name = By.id("0_4");
 	By age = By.id("0_1");
-	By gender = By.xpath("//div[@aria-label='Male']");
+	By gender = By.xpath("//div[@aria-label='Female']");
 	By freeCancellation = By.xpath("(//*[@class='fcSubheader___7e52e7'])[2]");
 	By redbusassurance = By.id("insuranceRejectText");
 	By donation = By.xpath("(//*[@class='switchLabel___a8ead2 unChecked___09ee04 enabled___ad293b '])[2]");
