@@ -21,6 +21,7 @@ public class SearchTest extends BaseTest {
 		busresult = new BusResultPage(driver);
 		bookingpage = new BookingPage(driver); 
 	}
+	
 	@Test(priority=0)
 	public void searchbus() throws InterruptedException
 	{
